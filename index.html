@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-theme="light" data-gender="male">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <script>
+      /* Pre-paint bootstrap: restore persisted language, theme and gender mode
+         before first paint to avoid flashes of the wrong theme or direction.
+         Must stay in sync with src/services/storage.js (STORAGE_KEY). */
+      (function () {
+        try {
+          var prefs = JSON.parse(localStorage.getItem('growth-atlas.prefs') || '{}');
+          var theme = prefs.theme === 'dark' || prefs.theme === 'light'
+            ? prefs.theme
+            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+          var lang = prefs.language === 'ar' ? 'ar' : 'en';
+          var root = document.documentElement;
+          root.dataset.theme = theme;
+          root.lang = lang;
+          root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+          if (prefs.gender === 'female' || prefs.gender === 'male') root.dataset.gender = prefs.gender;
+        } catch (e) {
+          /* Corrupted storage — fall back to defaults already on the element. */
+        }
+      })();
+    </script>
+    <title>Growth Atlas — Infant Growth Reference</title>
+    <meta
+      name="description"
+      content="Growth Atlas — an interactive infant growth reference and educational analysis tool for birth through 12 months. Bilingual English/Arabic, works offline."
+    />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F7FA" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#18212D" />
+    <link rel="icon" type="image/svg+xml" href="/Growth-Atlas/favicon.svg" />
+    <link rel="apple-touch-icon" href="/Growth-Atlas/icons/icon-192.png" />
+    <link rel="manifest" href="/Growth-Atlas/manifest.json" />
+    <script type="module" crossorigin src="/Growth-Atlas/assets/index--AeC_ibB.js"></script>
+    <link rel="stylesheet" crossorigin href="/Growth-Atlas/assets/index-CfU5dK9E.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content" data-i18n="a11y.skipToContent">Skip to main content</a>
+    <div id="app" class="app-root">
+      <div class="boot-splash" aria-hidden="true"></div>
+    </div>
+    <noscript>
+      <div style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 40rem; margin: 0 auto">
+        <h1>Growth Atlas</h1>
+        <p>
+          This application requires JavaScript. / هذا التطبيق يتطلب تفعيل JavaScript في المتصفح.
+        </p>
+      </div>
+    </noscript>
+  </body>
+</html>
