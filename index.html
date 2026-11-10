@@ -1,19 +1,18 @@
 <!doctype html>
-<html lang="en" dir="ltr" data-theme="light" data-gender="male">
+<html lang="ar" dir="rtl" data-theme="light" data-gender="male">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <script>
       /* Pre-paint bootstrap: restore persisted language, theme and gender mode
          before first paint to avoid flashes of the wrong theme or direction.
-         Must stay in sync with src/services/storage.js (STORAGE_KEY). */
+         Must stay in sync with src/services/storage.js (STORAGE_KEY).
+         Defaults: Arabic + light theme (stored preferences always win). */
       (function () {
         try {
           var prefs = JSON.parse(localStorage.getItem('growth-atlas.prefs') || '{}');
-          var theme = prefs.theme === 'dark' || prefs.theme === 'light'
-            ? prefs.theme
-            : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-          var lang = prefs.language === 'ar' ? 'ar' : 'en';
+          var theme = prefs.theme === 'dark' || prefs.theme === 'light' ? prefs.theme : 'light';
+          var lang = prefs.language === 'en' ? 'en' : 'ar';
           var root = document.documentElement;
           root.dataset.theme = theme;
           root.lang = lang;
@@ -34,8 +33,8 @@
     <link rel="icon" type="image/svg+xml" href="/Growth-Atlas/favicon.svg" />
     <link rel="apple-touch-icon" href="/Growth-Atlas/icons/icon-192.png" />
     <link rel="manifest" href="/Growth-Atlas/manifest.json" />
-    <script type="module" crossorigin src="/Growth-Atlas/assets/index-BCmTqXgT.js"></script>
-    <link rel="stylesheet" crossorigin href="/Growth-Atlas/assets/index-C3IBnHfD.css">
+    <script type="module" crossorigin src="/Growth-Atlas/assets/index-BFHWGnol.js"></script>
+    <link rel="stylesheet" crossorigin href="/Growth-Atlas/assets/index-DsDD2MuT.css">
   </head>
   <body>
     <a class="skip-link" href="#main-content" data-i18n="a11y.skipToContent">Skip to main content</a>
